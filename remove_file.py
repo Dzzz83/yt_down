@@ -57,7 +57,7 @@ def process_wav_files(source_directory, min_duration=30, final_folder_path=r"C:\
                     print(f"Skipping file due to read error: {filepath}")
                     continue
                 
-                if duration < min_duration:
+                if duration < min_duration or duration > min_duration:
                     # Delete the file
                     try:
                         os.remove(filepath)
@@ -83,8 +83,8 @@ def process_wav_files(source_directory, min_duration=30, final_folder_path=r"C:\
                         print(f"Failed to move {filepath}: {e}")
     
     print("\nOperation Completed.")
-    print(f"All WAV files shorter than {min_duration} seconds have been deleted.")
-    print(f"All WAV files equal to or longer than {min_duration} seconds have been moved to '{final_folder_path}' and renamed accordingly.")
+    print(f"All WAV files shorter than or longer than {min_duration} seconds have been deleted.")
+    print(f"All WAV files equal to {min_duration} seconds have been moved to '{final_folder_path}' and renamed accordingly.")
 
 def main():
     # Prompt the user for the source directory path
